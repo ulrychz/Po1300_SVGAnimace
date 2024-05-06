@@ -1,9 +1,22 @@
 ﻿@page "/svg"
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+
 <div class="my-2">
     <button class="btn btn-primary" @onclick="PridatObrazec">Přidat obrazec</button>
     <button class="btn btn-warning" @onclick="OdebratObrazec">Odebrat obrazec</button>
-</div>
 
+    <button class="btn btn-primary" @onclick="Posun">Spustit posun</button>
+    <button class="btn btn-primary" @onclick="PosunZastavit">Zastavit posun</button>
+
+    <input type="range" class="form-range" @bind-value=PosunKrok min="1" max="10">
+</div>
+<div>
+    <button class="btn btn-primary" @onclick="Ulozit">Uložit</button>
+    <button class="btn btn-primary" @onclick="NacistData">Načíst</button>
+    <button class="btn btn-danger" @onclick="SmazatData">Smazat v LocalStrage</button>
+
+</div>
 <svg width="@SvgWidth" height="@SvgHeight" xmlns="http://www.w3.org/2000/svg" style="border-color:black; border-style:solid">
     @foreach (var item in SvgObrazceList)
     {
